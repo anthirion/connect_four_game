@@ -2,6 +2,9 @@
 ## Principe du jeu
 Le jeu puissance 4 se joue à l’aide d’une grille verticale de sept colonnes sur six lignes. Chaque joueur dispose de vingt et un jetons d’une couleur. A tour de rôle, les joueurs placent un jeton dans une colonne à la position la plus basse possible dans ladite colonne. Pour gagner le jeu, un joueur doit aligner quatre jetons de la même couleur verticalement, horizontalement ou en oblique. Si, alors que toutes les cases de la grille de jeu sont remplies, aucun des deux joueurs n'a réalisé un tel alignement, la partie est déclarée nulle.
 
+## Présentation du projet
+Ce projet implémente un puissance 4 en C. Ce jeu peut être joué par 2 joueurs ou un seul. Si un seul joueur joue, l'autre joueur sera l'ordinateur. Attention, l'ordinateur ne vous fera pas de cadeaux !
+
 ## Structure du projet
 Le projet est découpé en plusieurs fichiers sources :
 <ul>
