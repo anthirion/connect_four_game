@@ -1,5 +1,5 @@
 #include "interactions.h"
-#include "constants.c"
+#include "constants.h"
 
 int choose_column() {
     /*
