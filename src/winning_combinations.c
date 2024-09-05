@@ -7,9 +7,9 @@ par la fonction check_game_status
 #include "grid.h"
 #include "constants.h"
 
-unsigned diagonnally_winning_combinations(unsigned grid[6][7]) {
+unsigned diagonnally_winning_combinations() {
     unsigned game_status, test_number = 1;
-    // reset the grid configuration, ie set all cells to -1
+    unsigned grid[6][7];
     init_grid(grid);
 
     // Diagonale montante
@@ -131,9 +131,9 @@ unsigned diagonnally_winning_combinations(unsigned grid[6][7]) {
 
 }
 
-unsigned vertically_winning_combinations(unsigned grid[6][7]) {
+unsigned vertically_winning_combinations() {
     unsigned game_status, test_number;
-    // reset the grid configuration, ie set all cells to -1
+    unsigned grid[6][7];
     init_grid(grid);
 
     for (unsigned column = 0; column < N_COLUMNS - 1; column++) {
@@ -189,9 +189,9 @@ unsigned vertically_winning_combinations(unsigned grid[6][7]) {
     return TEST_PASSED;
 }
 
-unsigned horizontally_winning_combinations(unsigned grid[6][7]) {
+unsigned horizontally_winning_combinations() {
     unsigned game_status, test_number = 1;
-    // reset the grid configuration, ie set all cells to -1
+    unsigned grid[6][7];
     init_grid(grid);
 
     // Première combinaison gagnante: 4 jetons rouge alignés sur la première ligne
@@ -224,21 +224,38 @@ unsigned horizontally_winning_combinations(unsigned grid[6][7]) {
 }
 
 unsigned check_winning_combinations() {
-    unsigned grid[6][7];
     unsigned test_result;
 
-    test_result = diagonnally_winning_combinations(grid);
+    test_result = diagonnally_winning_combinations();
     if (test_result != TEST_PASSED)
         return TEST_FAILED;
     
-    test_result = vertically_winning_combinations(grid);
+    test_result = vertically_winning_combinations();
     if (test_result != TEST_PASSED)
         return TEST_FAILED;
 
-    test_result = horizontally_winning_combinations(grid);
+    test_result = horizontally_winning_combinations();
     if (test_result != TEST_PASSED)
         return TEST_FAILED;
 
     return TEST_PASSED;
+}
 
+unsigned check_column_full_error() {
+    // Vérifie que l'erreur COLUMN_FULL fonctionne correctement
+    unsigned error;
+    unsigned grid[6][7];
+    init_grid(grid);
+
+    // Remplir la colonne 0
+    unsigned column = 0;
+    for (unsigned cpt = 0; cpt < N_ROWS; cpt++)
+        play_token(grid, column, RED);
+    // Essayer d'ajouter un jeton dans la colonne pleine
+    // Doit lever l'erreur COLUMN_FULL
+    error = play_token(grid, column, RED);
+    if (error != COLUMN_FULL)
+        return TEST_FAILED;
+    
+    return TEST_PASSED;
 }

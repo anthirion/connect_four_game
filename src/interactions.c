@@ -5,8 +5,8 @@ int choose_column() {
     /*
     Affiche une invitation à l'utilisateur de choisir un numéro
     de colonne.
-    [ATTENTION] Le numéro de colonne entré par l'utilisateur (entre 1 et 7)
-    est décrémenté de 1 pour être entre 0 et 6.
+    [ATTENTION] Le numéro de colonne entré par l'utilisateur est entre 1 et 7.
+    Il doit être décrémenté de 1 pour être entre 0 et 6.
     L'entier renvoyé indique si une erreur s'est produite ou non :
         - NO_ERROR => pas d'erreur
         - COLUMN_NUMBER_ERROR => le numéro de colonne est invalide

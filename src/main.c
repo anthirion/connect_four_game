@@ -16,6 +16,9 @@ int main() {
     test_result = check_winning_combinations();
     if (test_result != TEST_PASSED)
         return EXIT_FAILURE;
+    test_result = check_winning_combinations();
+    if (test_result != TEST_PASSED)
+        return EXIT_FAILURE;
     
     return EXIT_SUCCESS;
 }
