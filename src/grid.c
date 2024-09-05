@@ -1,5 +1,4 @@
 #include "grid.h"
-#include "constants.h"
 
 /*
 La grille est composée de 6 lignes et 7 colonnes. La case (0, 0) est en haut à gauche.
