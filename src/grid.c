@@ -70,7 +70,7 @@ unsigned play_token(unsigned grid[6][7], const int column, enum color token_colo
    	unsigned row = N_ROWS - 1;
 	while (row != (unsigned)-1 && grid[row][column] != NO_TOKEN)
 		row--;
-	if (row == 0)
+	if (row == (unsigned)-1)
 		return COLUMN_FULL;
 	else
 		grid[row][column] = ++token_color;

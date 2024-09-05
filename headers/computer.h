@@ -1,6 +1,7 @@
 #ifndef COMPUTER_H
 #define COMPUTER_H
 
+#include <stdlib.h>
 #include "constants.h"
 #include "grid.h"
 

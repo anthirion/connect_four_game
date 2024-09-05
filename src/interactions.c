@@ -9,16 +9,24 @@ void choose_column(unsigned grid[6][7], enum color color) {
     Il doit être décrémenté de 1 pour être entre 0 et 6.
     */
     int column;
-    unsigned error;
+    char buffer[100];
+    
 column_choice:
     printf("Choisissez le numéro de colonne où placer le jeton: \t");
-    while (scanf("%d", &column) != 1 || column < 1 || column > 7) {
-        printf("Veuillez entrer un entier entre 1 et 7 inclus\n");
-        printf("Entrez à nouveau un numéro de colonne: \t");
+    // Boucle tant que l'entrée n'est pas un entier valide entre 1 et 7
+    while (1) {
+        if (scanf("%d", &column) != 1 || column < 1 || column > 7) {
+            // Si l'entrée n'est pas valide, vider le buffer et afficher un message d'erreur
+            fgets(buffer, sizeof(buffer), stdin);  // Consomme les données restantes du buffer
+            printf("Veuillez entrer un entier entre 1 et 7 inclus\n");
+            printf("Entrez à nouveau un numéro de colonne: \t");
+        } else {
+            break;  // Si l'entrée est correcte, sortir de la boucle
+        }
     }
-    // ATTENTION: changer la couleur du jeton en fonction du joueur qui joue
-    error = play_token(grid, --column, color);
-    if (error == COLUMN_FULL) {
+
+    // Vérifier si la colonne est pleine
+    if (play_token(grid, --column, color) == COLUMN_FULL) {
         printf("La colonne que vous essayez de remplir est pleine\n");
         printf("Entrez une autre colonne\n");
         goto column_choice;

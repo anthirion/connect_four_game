@@ -39,6 +39,8 @@ void play_with_computer(unsigned grid[6][7]) {
         printf("\033[0;31m"); 
         printf("INTERNAL ERROR: GAME_STATUS INCORRECT\n");
         // Réinitialise la couleur
-        printf("\033[0m");    
+        printf("\033[0m");
+        // Génère un core file
+        abort();  
     }
 }
