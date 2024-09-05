@@ -8,7 +8,7 @@ par la fonction check_game_status
 #include "constants.h"
 
 unsigned diagonnally_winning_combinations() {
-    unsigned game_status, test_number = 1;
+    unsigned test_number = 1;
     unsigned grid[6][7];
     init_grid(grid);
 
@@ -25,8 +25,7 @@ unsigned diagonnally_winning_combinations() {
     play_token(grid, 3, RED);
     play_token(grid, 3, YELLOW);
     play_token(grid, 3, YELLOW);
-    game_status = check_game_status(grid);
-    if (game_status == GAME_CONTINUE) {
+    if (check_game_status(grid) == GAME_CONTINUE) {
         // Change la couleur du texte en rouge
         printf("\033[0;31m");
         printf("Diagonally test %d failed\n", test_number);
@@ -47,8 +46,7 @@ unsigned diagonnally_winning_combinations() {
     play_token(grid, 6, RED);
     play_token(grid, 6, YELLOW);
     play_token(grid, 6, YELLOW);
-    game_status = check_game_status(grid);
-    if (game_status == GAME_CONTINUE) {
+    if (check_game_status(grid) == GAME_CONTINUE) {
         printf("\033[0;31m");
         printf("Diagonally test %d failed\n", test_number);
         // Réinitialise la couleur
@@ -69,8 +67,7 @@ unsigned diagonnally_winning_combinations() {
     play_token(grid, 5, YELLOW);
     play_token(grid, 2, RED);
     play_token(grid, 5, RED);
-    game_status = check_game_status(grid);
-    if (game_status == GAME_CONTINUE) {
+    if (check_game_status(grid) == GAME_CONTINUE) {
         printf("\033[0;31m");
         printf("Diagonally test %d failed\n", test_number);
         // Réinitialise la couleur
@@ -95,8 +92,7 @@ unsigned diagonnally_winning_combinations() {
     play_token(grid, 4, RED);
     play_token(grid, 5, YELLOW);
     play_token(grid, 1, RED);
-    game_status = check_game_status(grid);
-    if (game_status == GAME_CONTINUE) {
+    if (check_game_status(grid) == GAME_CONTINUE) {
         printf("\033[0;31m");
         printf("Diagonally test %d failed\n", test_number);
         // Réinitialise la couleur
@@ -116,8 +112,7 @@ unsigned diagonnally_winning_combinations() {
     play_token(grid, 0, RED);
     play_token(grid, 0, YELLOW);
     play_token(grid, 0, YELLOW);
-    game_status = check_game_status(grid);
-    if (game_status == GAME_CONTINUE) {
+    if (check_game_status(grid) == GAME_CONTINUE) {
         printf("\033[0;31m");
         printf("Diagonally test %d failed\n", test_number);
         // Réinitialise la couleur
@@ -137,8 +132,7 @@ unsigned diagonnally_winning_combinations() {
     play_token(grid, 1, RED);
     play_token(grid, 1, YELLOW);
     play_token(grid, 1, YELLOW);
-    game_status = check_game_status(grid);
-    if (game_status == GAME_CONTINUE) {
+    if (check_game_status(grid) == GAME_CONTINUE) {
         printf("\033[0;31m");
         printf("Diagonally test %d failed\n", test_number);
         // Réinitialise la couleur
@@ -151,18 +145,17 @@ unsigned diagonnally_winning_combinations() {
 }
 
 unsigned vertically_winning_combinations() {
-    unsigned game_status, test_number;
+    unsigned test_number;
     unsigned grid[6][7];
     init_grid(grid);
 
-    for (unsigned column = 0; column < N_COLUMNS - 1; column++) {
+    for (unsigned column = 0; column < N_COLUMNS; column++) {
         test_number = 1;
         // Première combinaison gagnante: 4 jetons rouges
         for (unsigned cpt = 0; cpt < 4; cpt ++)
             play_token(grid, column, RED);
         // vérifier que cette combinaison est gagnante
-        game_status = check_game_status(grid);
-        if (game_status == GAME_CONTINUE) {
+        if (check_game_status(grid) == GAME_CONTINUE) {
             // Change la couleur du texte en rouge
             printf("\033[0;31m");
             printf("Vertical test %d at column %d failed\n", test_number, column);
@@ -178,8 +171,7 @@ unsigned vertically_winning_combinations() {
         for (unsigned cpt = 0; cpt < 4; cpt ++)
             play_token(grid, column, RED);
         // vérifier que cette combinaison est gagnante
-        game_status = check_game_status(grid);
-        if (game_status == GAME_CONTINUE) {
+        if (check_game_status(grid) == GAME_CONTINUE) {
             // Change la couleur du texte en rouge
             printf("\033[0;31m");
             printf("Vertical test %d at column %d failed\n", test_number, column);
@@ -194,8 +186,7 @@ unsigned vertically_winning_combinations() {
         for (unsigned cpt = 0; cpt < 4; cpt ++)
             play_token(grid, column, RED);
         // vérifier que cette combinaison est gagnante
-        game_status = check_game_status(grid);
-        if (game_status == GAME_CONTINUE) {
+        if (check_game_status(grid) == GAME_CONTINUE) {
             // Change la couleur du texte en rouge
             printf("\033[0;31m");
             printf("Vertical test %d at column %d failed\n", test_number, column);
@@ -211,8 +202,7 @@ unsigned vertically_winning_combinations() {
         for (unsigned cpt = 0; cpt < 4; cpt ++)
             play_token(grid, column, RED);
         // vérifier que cette combinaison est gagnante
-        game_status = check_game_status(grid);
-        if (game_status == GAME_CONTINUE) {
+        if (check_game_status(grid) == GAME_CONTINUE) {
             // Change la couleur du texte en rouge
             printf("\033[0;31m");
             printf("Vertical test %d at column %d failed\n", test_number, column);
@@ -225,7 +215,7 @@ unsigned vertically_winning_combinations() {
 }
 
 unsigned horizontally_winning_combinations() {
-    unsigned game_status, test_number = 1;
+    unsigned test_number = 1;
     unsigned grid[6][7];
     init_grid(grid);
 
@@ -233,8 +223,7 @@ unsigned horizontally_winning_combinations() {
     for (unsigned column = 0; column < 4; column++)
         play_token(grid, column, RED);
     // vérifier que cette combinaison est gagnante
-    game_status = check_game_status(grid);
-    if (game_status == GAME_CONTINUE) {
+    if (check_game_status(grid) == GAME_CONTINUE) {
         // Change la couleur du texte en rouge
         printf("\033[0;31m");
         printf("Horizontal test %d failed\n", test_number);
@@ -253,8 +242,7 @@ unsigned horizontally_winning_combinations() {
     for (unsigned column = 0; column < 4; column++)
         play_token(grid, column, RED);
     // vérifier que cette combinaison est gagnante
-    game_status = check_game_status(grid);
-    if (game_status == GAME_CONTINUE) {
+    if (check_game_status(grid) == GAME_CONTINUE) {
         // Change la couleur du texte en rouge
         printf("\033[0;31m");
         printf("Horizontal test %d failed\n", test_number);

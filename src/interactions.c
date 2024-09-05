@@ -24,14 +24,3 @@ column_choice:
         goto column_choice;
     }
 }
-
-unsigned end_game() {
-    /*
-    Cette fonction vérifie en boucle que l'utilisateur ne clique pas sur F
-    pour terminer le jeu.
-    Valeur de retour :
-        - GAME_CONTINUE si le joueur n'a pas cliqué sur F
-        - GAME_INTERRUPTED_BY_PLAYER si le joueur a cliqué sur F
-    */
-   return GAME_CONTINUE;
-}

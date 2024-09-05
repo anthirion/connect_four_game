@@ -14,8 +14,8 @@ extern const unsigned COLUMN_NUMBER_ERROR;
 extern const unsigned GAME_CONTINUE;
 extern const unsigned PLAYER_1_WON;
 extern const unsigned PLAYER_2_WON;
-extern const unsigned GAME_INTERRUPTED_BY_PLAYER;
 extern const unsigned TEST_PASSED;
 extern const unsigned TEST_FAILED;
+extern const unsigned NO_WINNING_MOVE;
 
 #endif
