@@ -15,4 +15,5 @@ Le projet est découpé en plusieurs fichiers sources et headers :
 <li>computer_game.c: défini la boucle principale du jeu dans le cas où 1 humain joue contre l'ordinateur. Cette boucle est réutilisée dans le fichier main.c dans le cas où l'utilisateur choisit de jouer avec l'ordinateur.</li>
 <li>main.c: boucle principale du programme qui demande à l'utilisateur de choisir s'il veut jouer avec ou sans ordinateur et applique la bonne boucle en conséquence.</li>
 <li>constants.c: définit les constantes correspondant aux codes d'erreur.</li>
+<li>winning_combinations.c: tests pour s'assurer que la fonction de vérification du statut du jeu (jeu terminé ou non) est correcte</li>
 </ul>
