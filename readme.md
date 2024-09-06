@@ -17,3 +17,13 @@ Le projet est découpé en plusieurs fichiers sources et headers :
 <li>constants.c: définit les constantes correspondant aux codes d'erreur.</li>
 <li>winning_combinations.c: tests pour s'assurer que la fonction de vérification du statut du jeu (jeu terminé ou non) est correcte</li>
 </ul>
+
+## Points à retenir
+<ul>
+<li>Pour une boucle utilisant un unsigned, la condition d'arrêt est :
+for (unsigned index = 10; index != (unsigned) - 1; index--)
+</li>
+<li>La fonction abort produit un core file</li>
+<li>Pour utiliser des constantes dans plusieurs fichiers sans avoir à les déclarer à chaque fois, utiliser le mot-clé extern.</li>
+<li>Pour lire un fichier core, utiliser la commande gdb ./prog ./core_file</li>
+</ul>
