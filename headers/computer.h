@@ -5,9 +5,9 @@
 #include "constants.h"
 #include "grid.h"
 
-void undo_move(unsigned grid[6][7], const unsigned column);
-unsigned check_winning_move(unsigned grid[6][7]);
-void compute_column_scores(unsigned grid[6][7]);
-unsigned play(unsigned grid[6][7]);
+void undo_move(unsigned short grid[6][7], const unsigned short column);
+unsigned short check_winning_move(unsigned short grid[6][7]);
+void compute_column_scores(unsigned short grid[6][7]);
+unsigned short play(unsigned short grid[6][7]);
 
 #endif

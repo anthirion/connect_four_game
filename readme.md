@@ -20,8 +20,8 @@ Le projet est découpé en plusieurs fichiers sources et headers :
 
 ## Points à retenir
 <ul>
-<li>Pour une boucle utilisant un unsigned, la condition d'arrêt est :
-for (unsigned index = 10; index != (unsigned) - 1; index--)
+<li>Pour une boucle utilisant un unsigned short, la condition d'arrêt est :
+for (unsigned short index = 10; index != (unsigned short) - 1; index--)
 </li>
 <li>La fonction abort produit un core file</li>
 <li>Pour utiliser des constantes dans plusieurs fichiers sans avoir à les déclarer à chaque fois, utiliser le mot-clé extern.</li>

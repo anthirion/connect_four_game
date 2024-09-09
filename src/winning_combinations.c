@@ -7,9 +7,9 @@ par la fonction check_game_status
 #include "grid.h"
 #include "constants.h"
 
-unsigned diagonnally_winning_combinations() {
-    unsigned test_number = 1;
-    unsigned grid[6][7];
+unsigned short diagonnally_winning_combinations() {
+    unsigned short test_number = 1;
+    unsigned short grid[6][7];
     init_grid(grid);
 
     // Diagonale montante
@@ -144,15 +144,15 @@ unsigned diagonnally_winning_combinations() {
 
 }
 
-unsigned vertically_winning_combinations() {
-    unsigned test_number;
-    unsigned grid[6][7];
+unsigned short vertically_winning_combinations() {
+    unsigned short test_number;
+    unsigned short grid[6][7];
     init_grid(grid);
 
-    for (unsigned column = 0; column < N_COLUMNS; column++) {
+    for (unsigned short column = 0; column < N_COLUMNS; column++) {
         test_number = 1;
         // Première combinaison gagnante: 4 jetons rouges
-        for (unsigned cpt = 0; cpt < 4; cpt ++)
+        for (unsigned short cpt = 0; cpt < 4; cpt ++)
             play_token(grid, column, RED);
         // vérifier que cette combinaison est gagnante
         if (check_game_status(grid) == GAME_CONTINUE) {
@@ -168,7 +168,7 @@ unsigned vertically_winning_combinations() {
         // Deuxième combinaison gagnante: 1 jeton rouge, 1 jeton jaune et 4 jetons rouges
         play_token(grid, column, RED);
         play_token(grid, column, YELLOW);
-        for (unsigned cpt = 0; cpt < 4; cpt ++)
+        for (unsigned short cpt = 0; cpt < 4; cpt ++)
             play_token(grid, column, RED);
         // vérifier que cette combinaison est gagnante
         if (check_game_status(grid) == GAME_CONTINUE) {
@@ -183,7 +183,7 @@ unsigned vertically_winning_combinations() {
         
         // Troisième combinaison gagnante: 1 jeton jaune et 4 jetons rouges
         play_token(grid, column, YELLOW);
-        for (unsigned cpt = 0; cpt < 4; cpt ++)
+        for (unsigned short cpt = 0; cpt < 4; cpt ++)
             play_token(grid, column, RED);
         // vérifier que cette combinaison est gagnante
         if (check_game_status(grid) == GAME_CONTINUE) {
@@ -197,9 +197,9 @@ unsigned vertically_winning_combinations() {
         ++test_number;
         
         // Quatrième combinaison gagnante: 2 jetons jaunes et 4 jetons rouges
-        for (unsigned cpt = 0; cpt < 2; cpt ++)
+        for (unsigned short cpt = 0; cpt < 2; cpt ++)
             play_token(grid, column, YELLOW);
-        for (unsigned cpt = 0; cpt < 4; cpt ++)
+        for (unsigned short cpt = 0; cpt < 4; cpt ++)
             play_token(grid, column, RED);
         // vérifier que cette combinaison est gagnante
         if (check_game_status(grid) == GAME_CONTINUE) {
@@ -214,13 +214,13 @@ unsigned vertically_winning_combinations() {
     return TEST_PASSED;
 }
 
-unsigned horizontally_winning_combinations() {
-    unsigned test_number = 1;
-    unsigned grid[6][7];
+unsigned short horizontally_winning_combinations() {
+    unsigned short test_number = 1;
+    unsigned short grid[6][7];
     init_grid(grid);
 
     // Première combinaison gagnante: 4 jetons rouge alignés sur la première ligne
-    for (unsigned column = 0; column < 4; column++)
+    for (unsigned short column = 0; column < 4; column++)
         play_token(grid, column, RED);
     // vérifier que cette combinaison est gagnante
     if (check_game_status(grid) == GAME_CONTINUE) {
@@ -235,11 +235,11 @@ unsigned horizontally_winning_combinations() {
     
     // Deuxième combinaison gagnante: 4 jetons rouge alignés sur la deuxième ligne
     // On remplit la première ligne
-    for (unsigned column = 0; column < 3; column++)
+    for (unsigned short column = 0; column < 3; column++)
         play_token(grid, column, RED);
     play_token(grid, 3, YELLOW);
     // On remplit la deuxième ligne
-    for (unsigned column = 0; column < 4; column++)
+    for (unsigned short column = 0; column < 4; column++)
         play_token(grid, column, RED);
     // vérifier que cette combinaison est gagnante
     if (check_game_status(grid) == GAME_CONTINUE) {
@@ -254,8 +254,8 @@ unsigned horizontally_winning_combinations() {
     return TEST_PASSED;
 }
 
-unsigned check_winning_combinations() {
-    unsigned test_result;
+unsigned short check_winning_combinations() {
+    unsigned short test_result;
 
     test_result = diagonnally_winning_combinations();
     if (test_result != TEST_PASSED)
@@ -272,15 +272,15 @@ unsigned check_winning_combinations() {
     return TEST_PASSED;
 }
 
-unsigned check_column_full_error() {
+unsigned short check_column_full_error() {
     // Vérifie que l'erreur COLUMN_FULL fonctionne correctement
-    unsigned error;
-    unsigned grid[6][7];
+    unsigned short error;
+    unsigned short grid[6][7];
     init_grid(grid);
 
     // Remplir la colonne 0
-    unsigned column = 0;
-    for (unsigned cpt = 0; cpt < N_ROWS; cpt++)
+    unsigned short column = 0;
+    for (unsigned short cpt = 0; cpt < N_ROWS; cpt++)
         play_token(grid, column, RED);
     // Essayer d'ajouter un jeton dans la colonne pleine
     // Doit lever l'erreur COLUMN_FULL

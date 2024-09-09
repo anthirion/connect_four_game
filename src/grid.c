@@ -14,12 +14,12 @@ const int UP = -1;
 const int DOWN = 1;
 
 
-void init_grid(unsigned grid[6][7]) {
+void init_grid(unsigned short grid[6][7]) {
     /*
     Place des -1 dans toute la grille, indiquant l'absence de jetons
     */
-   for (unsigned row = 0; row < N_ROWS; row++) {
-		for (unsigned column = 0; column < N_COLUMNS; column++)
+   for (unsigned short row = 0; row < N_ROWS; row++) {
+		for (unsigned short column = 0; column < N_COLUMNS; column++)
 			grid[row][column] = NO_TOKEN;
    }
 }
@@ -27,18 +27,18 @@ void init_grid(unsigned grid[6][7]) {
 void display_line_numbers() {
 	// Display the line numbers at the top and bottom of the grid
 	printf(" ");
-	for (unsigned row = 0; row < N_ROWS+1; row++)
+	for (unsigned short row = 0; row < N_ROWS+1; row++)
 		printf(" %u  ", row+1);
 }
 
-void display_grid(const unsigned grid[6][7]) {
+void display_grid(const unsigned short grid[6][7]) {
 	// Pattern séparant les lignes
 	const char sep_pattern[] = "\n+---+---+---+---+---+---+---+\n";
 	display_line_numbers();
 	printf(sep_pattern);
 	
-	for (unsigned row = 0; row < N_ROWS; row++) {
-		for (unsigned column = 0; column < N_COLUMNS; column++) {
+	for (unsigned short row = 0; row < N_ROWS; row++) {
+		for (unsigned short column = 0; column < N_COLUMNS; column++) {
 			if (grid[row][column] == NO_TOKEN)
 				printf("|   ");
 			else if (grid[row][column] == YELLOW_TOKEN)
@@ -53,7 +53,7 @@ void display_grid(const unsigned grid[6][7]) {
 	printf("\n\n");
 }
 
-unsigned play_token(unsigned grid[6][7], const int column, enum color token_color) {
+unsigned short play_token(unsigned short grid[6][7], const int column, enum color token_color) {
     /*
     Place un jeton de la couleur {color} dans la colonne {column}.
     L'entier renvoyé indique si une erreur s'est produite ou non :
@@ -67,22 +67,22 @@ unsigned play_token(unsigned grid[6][7], const int column, enum color token_colo
     défaut le joueur 1 se verra attribuée la couleur 0, jaune, et le
     joueur 2 la couleur 1, rouge).
     */
-   	unsigned row = N_ROWS - 1;
-	while (row != (unsigned)-1 && grid[row][column] != NO_TOKEN)
+   	unsigned short row = N_ROWS - 1;
+	while (row != (unsigned short)-1 && grid[row][column] != NO_TOKEN)
 		row--;
-	if (row == (unsigned)-1)
+	if (row == (unsigned short)-1)
 		return COLUMN_FULL;
 	else
 		grid[row][column] = ++token_color;
 	return NO_ERROR;
 }
 
-unsigned checkVerticalWin(const unsigned grid[6][7]) {
+unsigned short checkVerticalWin(const unsigned short grid[6][7]) {
 	// Vérifier si 4 jetons sont alignés sur une ligne ou non
 	// Comme la case (0,0) est en haut à gauche, il faut vérifier à partir
 	// de la dernière ligne
-	for (unsigned column = 0; column < N_COLUMNS; column++) {
-		for (unsigned row = N_ROWS - 1; row >= 3 ; row--) { 
+	for (unsigned short column = 0; column < N_COLUMNS; column++) {
+		for (unsigned short row = N_ROWS - 1; row >= 3 ; row--) { 
 			if (grid[row][column] == YELLOW_TOKEN && grid[row-1][column] == YELLOW_TOKEN &&
 				grid[row-2][column] == YELLOW_TOKEN && grid[row-3][column] == YELLOW_TOKEN)
 				return PLAYER_1_WON;
@@ -94,11 +94,11 @@ unsigned checkVerticalWin(const unsigned grid[6][7]) {
 	return GAME_CONTINUE;
 }
 
-unsigned checkHorizontalWin(const unsigned grid[6][7]) {
+unsigned short checkHorizontalWin(const unsigned short grid[6][7]) {
 	// Vérifier si 4 jetons sont alignés sur une colonne ou non
 	// Ici l'ordre des lignes n'est pas important
-	for (unsigned row = N_ROWS - 1; row != (unsigned)-1; row--) {
-		for (unsigned column = 0; column < N_COLUMNS - 3; column++) { 
+	for (unsigned short row = N_ROWS - 1; row != (unsigned short)-1; row--) {
+		for (unsigned short column = 0; column < N_COLUMNS - 3; column++) { 
 			if (grid[row][column] == YELLOW_TOKEN && grid[row][column+1] == YELLOW_TOKEN &&
 				grid[row][column+2] == YELLOW_TOKEN && grid[row][column+3] == YELLOW_TOKEN)
 					return PLAYER_1_WON;
@@ -110,15 +110,15 @@ unsigned checkHorizontalWin(const unsigned grid[6][7]) {
 	return GAME_CONTINUE;
 }
 
-unsigned checkDiagonalWin(const unsigned grid[6][7], const unsigned row_start, const unsigned column_start, 
-									const unsigned steps, const int way) {
+unsigned short checkDiagonalWin(const unsigned short grid[6][7], const unsigned short row_start, const unsigned short column_start, 
+									const unsigned short steps, const int way) {
 	// Vérifier si 4 jetons sont alignés sur une diagonale ou non
 	// La diagonale vérifiée commence à la ligne {row_start} et colonne {column_start}
-	unsigned row = row_start;
-	unsigned column = column_start;
+	unsigned short row = row_start;
+	unsigned short column = column_start;
 	if (way == DOWN) {
 		// Diagonales descendantes
-		for (unsigned step=0; step < steps; step++) {
+		for (unsigned short step=0; step < steps; step++) {
 			if (grid[row][column] == YELLOW_TOKEN && grid[row+1][column+1] == YELLOW_TOKEN &&
 				grid[row+2][column+2] == YELLOW_TOKEN && grid[row+3][column+3] == YELLOW_TOKEN)
 				return PLAYER_1_WON;
@@ -133,7 +133,7 @@ unsigned checkDiagonalWin(const unsigned grid[6][7], const unsigned row_start, c
 	}
 	else if (way == UP) {
 		// Diagonales montantes
-		for (unsigned step=0; step < steps; step++) {
+		for (unsigned short step=0; step < steps; step++) {
 			if (grid[row][column] == YELLOW_TOKEN && grid[row-1][column+1] == YELLOW_TOKEN &&
 				grid[row-2][column+2] == YELLOW_TOKEN && grid[row-3][column+3] == YELLOW_TOKEN)
 				return PLAYER_1_WON;
@@ -149,7 +149,7 @@ unsigned checkDiagonalWin(const unsigned grid[6][7], const unsigned row_start, c
 	return GAME_CONTINUE;
 }
 
-unsigned check_game_status(unsigned grid[6][7]) {
+unsigned short check_game_status(unsigned short grid[6][7]) {
     /*
     Vérifie si 4 jetons de la même couleur sont alignés ou si toute
     la grille est remplie (les 2 conditions d'arrêt du jeu) ou encore
@@ -161,34 +161,34 @@ unsigned check_game_status(unsigned grid[6][7]) {
         - GAME_INTERRUPTED_BY_PLAYER: jeu terminé par un des 2 joueurs
         (la valeur des constantes est définie dans constants.c)
     */
-	unsigned game_status = checkHorizontalWin(grid);
+	unsigned short game_status = checkHorizontalWin(grid);
 	if (game_status != GAME_CONTINUE)
 		return game_status;
 	game_status = checkVerticalWin(grid);
 	if (game_status != GAME_CONTINUE)
 		return game_status;
 	// Vérifier les diagonales descendantes
-	unsigned steps = 1;
-	for (unsigned column=3; column >= 1; column--) {
+	unsigned short steps = 1;
+	for (unsigned short column=3; column >= 1; column--) {
 		game_status = checkDiagonalWin(grid, 0, column, steps, DOWN);
 		if (game_status != GAME_CONTINUE)
 			return game_status;
 		++steps;
 	}
-	for (unsigned row=0; row <= 2; row++) {
+	for (unsigned short row=0; row <= 2; row++) {
 		game_status = checkDiagonalWin(grid, row, 0, steps, DOWN);
 		if (game_status != GAME_CONTINUE)
 			return game_status;
 		--steps;
 	}
 	// Vérifier les diagonales montantes
-	for (unsigned row=3; row <= N_ROWS - 1; row++) {
+	for (unsigned short row=3; row <= N_ROWS - 1; row++) {
 		game_status = checkDiagonalWin(grid, row, 0, steps, UP);
 		if (game_status != GAME_CONTINUE)
 			return game_status;
 		++steps;
 	}
-	for (unsigned column = 1; column <= 3; column++) {
+	for (unsigned short column = 1; column <= 3; column++) {
 		game_status = checkDiagonalWin(grid, N_ROWS - 1, column, steps, UP);
 		if (game_status != GAME_CONTINUE)
 			return game_status;

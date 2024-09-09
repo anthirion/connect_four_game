@@ -1,10 +1,10 @@
 #include "human_game.h"
 
-void play_with_human(unsigned grid[6][7]) {
+void play_with_human(unsigned short grid[6][7]) {
     /*
     Boucle infinie qui définie le comportement du jeu avec 2 joueurs humain.
     */
-    unsigned game_status, round_number = 0;
+    unsigned short game_status, round_number = 0;
 
     do {
         printf("\nTOUR %d\n", round_number + 1);

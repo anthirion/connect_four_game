@@ -3,6 +3,6 @@
 
 #include "constants.h"
 
-void choose_column(unsigned grid[6][7], enum color color);
+void choose_column(unsigned short grid[6][7], enum color color);
 
 #endif

@@ -8,11 +8,11 @@
 
 int main() {
     char buffer[5];
-    unsigned grid[6][7];
+    unsigned short grid[6][7];
     init_grid(grid);
 
     // For test purposes
-    // unsigned test_result;
+    // unsigned short test_result;
     // test_result = check_winning_combinations();
     // if (test_result != TEST_PASSED)
     //     return EXIT_FAILURE;
