@@ -26,4 +26,6 @@ for (unsigned short index = 10; index != (unsigned short) - 1; index--)
 <li>La fonction abort produit un core file</li>
 <li>Pour utiliser des constantes dans plusieurs fichiers sans avoir à les déclarer à chaque fois, utiliser le mot-clé extern.</li>
 <li>Pour lire un fichier core, utiliser la commande gdb ./prog ./core_file</li>
+<li>Définir les enums dans un .h et pas dans un .c</li>
+<li>Ne pas mettre le mot-clé const pour les enums</li>
 </ul>
