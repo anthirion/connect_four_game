@@ -12,7 +12,7 @@ Le score d'une colonne est forcément positif ou nul.
 */
 static unsigned short moves_scores[7];
 
-void undo_move(unsigned short grid[6][7], const unsigned short column) {
+void undo_move(unsigned short grid[][N_COLUMNS], const unsigned short column) {
     unsigned short row = 0;
     // Trouver la première ligne non-vide dans la colonne
     while (row < N_ROWS && grid[row][column] == NO_TOKEN)
@@ -20,7 +20,7 @@ void undo_move(unsigned short grid[6][7], const unsigned short column) {
     grid[row][column] = NO_TOKEN;
 }
 
-unsigned short check_winning_move(unsigned short grid[6][7]) {
+unsigned short check_winning_move(unsigned short grid[][N_COLUMNS]) {
     for (unsigned short column = 0; column < N_COLUMNS; column++) {
         // Simuler un coup de l'ordinateur dans la colonne 'column'
         // L'ordinateur joue toujours un jeton rouge
@@ -46,7 +46,7 @@ unsigned short check_winning_move(unsigned short grid[6][7]) {
     return NO_WINNING_MOVE;
 }
 
-void compute_column_scores(unsigned short grid[6][7]) {
+void compute_column_scores(unsigned short grid[][N_COLUMNS]) {
     /*
     Complète le tableau moves_scores en calculant le score de chaque colonne
     */
@@ -130,7 +130,7 @@ unsigned short get_max_score_column(unsigned short moves_scores[7]) {
     return max_score_column;
 }
 
-unsigned short play(unsigned short grid[6][7]) {
+unsigned short play(unsigned short grid[][N_COLUMNS]) {
     /*
     Retourne la colonne ayant le score maximal
     */

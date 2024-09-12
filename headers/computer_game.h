@@ -6,6 +6,6 @@
 #include "interactions.h"
 #include "computer.h"
 
-void play_with_computer(unsigned short grid[6][7]);
+void play_with_computer(unsigned short grid[][N_COLUMNS]);
 
 #endif

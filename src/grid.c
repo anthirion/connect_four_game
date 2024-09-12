@@ -14,7 +14,7 @@ const int UP = -1;
 const int DOWN = 1;
 
 
-void init_grid(unsigned short grid[6][7]) {
+void init_grid(unsigned short grid[][N_COLUMNS]) {
     /*
     Place des -1 dans toute la grille, indiquant l'absence de jetons
     */
@@ -31,7 +31,7 @@ void display_line_numbers() {
 		printf(" %u  ", row+1);
 }
 
-void display_grid(const unsigned short grid[6][7]) {
+void display_grid(const unsigned short grid[][N_COLUMNS]) {
 	// Pattern séparant les lignes
 	const char sep_pattern[] = "\n+---+---+---+---+---+---+---+\n";
 	display_line_numbers();
@@ -53,7 +53,7 @@ void display_grid(const unsigned short grid[6][7]) {
 	printf("\n\n");
 }
 
-unsigned short play_token(unsigned short grid[6][7], const int column, enum color token_color) {
+unsigned short play_token(unsigned short grid[][N_COLUMNS], const int column, enum color token_color) {
     /*
     Place un jeton de la couleur {color} dans la colonne {column}.
     L'entier renvoyé indique si une erreur s'est produite ou non :
@@ -77,7 +77,7 @@ unsigned short play_token(unsigned short grid[6][7], const int column, enum colo
 	return NO_ERROR;
 }
 
-unsigned short checkVerticalWin(const unsigned short grid[6][7]) {
+unsigned short checkVerticalWin(const unsigned short grid[][N_COLUMNS]) {
 	// Vérifier si 4 jetons sont alignés sur une ligne ou non
 	// Comme la case (0,0) est en haut à gauche, il faut vérifier à partir
 	// de la dernière ligne
@@ -94,7 +94,7 @@ unsigned short checkVerticalWin(const unsigned short grid[6][7]) {
 	return GAME_CONTINUE;
 }
 
-unsigned short checkHorizontalWin(const unsigned short grid[6][7]) {
+unsigned short checkHorizontalWin(const unsigned short grid[][N_COLUMNS]) {
 	// Vérifier si 4 jetons sont alignés sur une colonne ou non
 	// Ici l'ordre des lignes n'est pas important
 	for (unsigned short row = N_ROWS - 1; row != (unsigned short)-1; row--) {
@@ -110,7 +110,7 @@ unsigned short checkHorizontalWin(const unsigned short grid[6][7]) {
 	return GAME_CONTINUE;
 }
 
-unsigned short checkDiagonalWin(const unsigned short grid[6][7], const unsigned short row_start, const unsigned short column_start, 
+unsigned short checkDiagonalWin(const unsigned short grid[][N_COLUMNS], const unsigned short row_start, const unsigned short column_start, 
 									const unsigned short steps, const int way) {
 	// Vérifier si 4 jetons sont alignés sur une diagonale ou non
 	// La diagonale vérifiée commence à la ligne {row_start} et colonne {column_start}
@@ -149,7 +149,7 @@ unsigned short checkDiagonalWin(const unsigned short grid[6][7], const unsigned 
 	return GAME_CONTINUE;
 }
 
-unsigned short check_game_status(unsigned short grid[6][7]) {
+unsigned short check_game_status(unsigned short grid[][N_COLUMNS]) {
     /*
     Vérifie si 4 jetons de la même couleur sont alignés ou si toute
     la grille est remplie (les 2 conditions d'arrêt du jeu) ou encore

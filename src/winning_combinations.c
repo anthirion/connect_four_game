@@ -9,7 +9,7 @@ par la fonction check_game_status
 
 unsigned short diagonnally_winning_combinations() {
     unsigned short test_number = 1;
-    unsigned short grid[6][7];
+    unsigned short grid[N_ROWS][N_COLUMNS];
     init_grid(grid);
 
     // Diagonale montante
@@ -146,7 +146,7 @@ unsigned short diagonnally_winning_combinations() {
 
 unsigned short vertically_winning_combinations() {
     unsigned short test_number;
-    unsigned short grid[6][7];
+    unsigned short grid[N_ROWS][N_COLUMNS];
     init_grid(grid);
 
     for (unsigned short column = 0; column < N_COLUMNS; column++) {
@@ -216,7 +216,7 @@ unsigned short vertically_winning_combinations() {
 
 unsigned short horizontally_winning_combinations() {
     unsigned short test_number = 1;
-    unsigned short grid[6][7];
+    unsigned short grid[N_ROWS][N_COLUMNS];
     init_grid(grid);
 
     // Première combinaison gagnante: 4 jetons rouge alignés sur la première ligne
@@ -275,7 +275,7 @@ unsigned short check_winning_combinations() {
 unsigned short check_column_full_error() {
     // Vérifie que l'erreur COLUMN_FULL fonctionne correctement
     unsigned short error;
-    unsigned short grid[6][7];
+    unsigned short grid[N_ROWS][N_COLUMNS];
     init_grid(grid);
 
     // Remplir la colonne 0

@@ -1,7 +1,7 @@
 #include "interactions.h"
 #include "grid.h"
 
-void choose_column(unsigned short grid[6][7], enum color color) {
+void choose_column(unsigned short grid[][N_COLUMNS], enum color color) {
     /*
     Affiche une invitation à l'utilisateur de choisir un numéro
     de colonne.

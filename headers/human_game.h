@@ -5,6 +5,6 @@
 #include "grid.h"
 #include "interactions.h"
 
-void play_with_human(unsigned short grid[6][7]);
+void play_with_human(unsigned short grid[][N_COLUMNS]);
 
 #endif

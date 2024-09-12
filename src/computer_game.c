@@ -1,6 +1,6 @@
 #include "computer_game.h"
 
-void play_with_computer(unsigned short grid[6][7]) {
+void play_with_computer(unsigned short grid[][N_COLUMNS]) {
     /*
     Boucle infinie qui définie le comportement du jeu avec 2 joueurs humain.
     */

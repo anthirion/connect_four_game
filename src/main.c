@@ -8,7 +8,7 @@
 
 int main() {
     char buffer[5];
-    unsigned short grid[6][7];
+    unsigned short grid[N_ROWS][N_COLUMNS];
     init_grid(grid);
 
     // For test purposes
