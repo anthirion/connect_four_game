@@ -10,8 +10,8 @@ Chaque case de la grille peut contenir 3 valeurs possibles :
     - la valeur NO_TOKEN indique qu'aucun jeton n'est présent sur la case.
 */
 
-const int UP = -1;
-const int DOWN = 1;
+const short UP = -1;
+const short DOWN = 1;
 
 
 void init_grid(unsigned short grid[][N_COLUMNS]) {

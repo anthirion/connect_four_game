@@ -11,7 +11,7 @@ const unsigned short RED_TOKEN = 2;
 // Tous les codes d'erreurs sont entre 10 et 19
 const unsigned short NO_ERROR = 10;
 const unsigned short COLUMN_FULL = 11;
-const unsigned short COLUMN_NUMBER_ERROR = 11;
+const unsigned short COLUMN_NUMBER_ERROR = 12;
 
 // Tous les messages d'information sont entre 20 et 29
 const unsigned short GAME_CONTINUE = 20;
